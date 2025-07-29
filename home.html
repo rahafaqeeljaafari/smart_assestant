@@ -1,44 +1,51 @@
 <!-- home.html -->
 <!DOCTYPE html><html lang="ar" dir="rtl"><head>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <title>المساعد الذكي للطالب</title>
-  <style>
-  :root{--grad1:#4e5eff;--grad2:#8b37ff;--bg:#f7f9ff;--card:#ffffff;--text:#1e1e1e}
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
-  body{background:var(--bg);display:flex;flex-direction:column;min-height:100vh;color:var(--text)}
-  header{padding:20px 30px;background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#fff;display:flex;align-items:center;justify-content:space-between}
-  .logo{font-size:1.6rem;font-weight:700;white-space:nowrap}
-  nav{display:flex;gap:25px}
-  nav a{color:var(--c);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:6px;transition:.3s}
-  nav a:hover{opacity:.8}
-  .auth{background:#fff;color:var(--grad1);border:none;border-radius:8px;padding:8px 18px;font-weight:600;cursor:pointer;transition:.3s}
-  .auth:hover{background:#f1f1f1}
-  main{flex:1;display:flex;justify-content:center;align-items:center;padding:40px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;width:100%;max-width:950px}
-  .card{background:var(--card);border-radius:18px;padding:40px;text-align:center;transition:.3s box-shadow,.3s transform}
-  .card i{font-size:48px;background:linear-gradient(90deg,var(--grad1),var(--grad2));-webkit-background-clip:text;color:transparent;margin-bottom:20px}
-  .card h3{margin-bottom:10px;font-size:1.25rem;font-weight:600}
-  .card:hover{box-shadow:0 12px 28px rgba(0,0,0,.08);transform:translateY(-4px);cursor:pointer}
-  footer{background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#fff;text-align:center;padding:25px 15px;font-size:.9rem}
-  footer span{display:block;margin-top:6px;direction:ltr}
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;justify-content:center;align-items:center;visibility:hidden;opacity:0;transition:.3s}
-  .modal.show{visibility:visible;opacity:1}
-  .modal-content{background:#fff;padding:30px 25px;border-radius:16px;max-width:400px;width:90%;text-align:center;line-height:1.8}
-  .modal-content h4{margin-bottom:15px;font-size:1.3rem}
-  .close{background:none;border:none;font-size:1.2rem;cursor:pointer;position:absolute;top:15px;left:20px}
-  @media(max-width:480px){.logo{font-size:1.4rem}.auth{padding:6px 14px;font-size:.85rem}.card{padding:30px}}
-  </style></head><body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<title>المساعد الذكي للطالب</title>
+<style>
+:root{--grad1:#4e5eff;--grad2:#8b37ff;--bg:#f7f9ff;--card:#ffffff;--text:#1e1e1e}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
+body{background:var(--bg);display:flex;flex-direction:column;min-height:100vh;color:var(--text)}
+header{background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#fff;padding:18px 30px;font-weight:700;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:1.6rem;font-weight:700;white-space:nowrap}
+nav{display:flex;gap:20px;font-size:.9rem}
+nav a{color:#fff;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:6px;transition:.3s}
+nav a:hover{opacity:.8}
+main{flex:1;display:flex;justify-content:center;align-items:center;padding:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;width:100%;max-width:950px}
+.card{background:var(--card);border-radius:18px;padding:40px;text-align:center;transition:.3s box-shadow,.3s transform}
+.card i{font-size:48px;background:linear-gradient(90deg,var(--grad1),var(--grad2));-webkit-background-clip:text;color:transparent;margin-bottom:20px}
+.card h3{margin-bottom:10px;font-size:1.25rem;font-weight:600}
+.card:hover{box-shadow:0 12px 28px rgba(0,0,0,.08);transform:translateY(-4px);cursor:pointer}
+footer{background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#fff;text-align:center;padding:25px 15px;font-size:.9rem}
+footer span{display:block;margin-top:6px;direction:ltr}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;justify-content:center;align-items:center;visibility:hidden;opacity:0;transition:.3s}
+.modal.show{visibility:visible;opacity:1}
+.modal-content{background:#fff;padding:30px 25px;border-radius:16px;max-width:400px;width:90%;text-align:center;line-height:1.8}
+.modal-content h4{margin-bottom:15px;font-size:1.3rem}
+.close{background:none;border:none;font-size:1.2rem;cursor:pointer;position:absolute;top:15px;left:20px}
+
+/* ---------- ميديا للجوال ---------- */
+@media(max-width:600px){
+ header{padding:16px 20px}
+ .logo{font-size:1.35rem}
+ nav{flex-direction:column;gap:12px;font-size:.85rem;align-items:flex-start;margin-top:10px}
+ main{padding:25px 15px}
+ .grid{gap:20px}
+ .card{padding:32px}
+}
+</style></head><body>
+
 <header>
  <div class="logo">المساعد الذكي للطلاب</div>
  <nav>
-  <a href="smart_assestant.html"><i class="fa-solid fa-robot"></i>المساعد الذكي</a>
+  <a href="smart_assistant.html"><i class="fa-solid fa-robot"></i>المساعد الذكي</a>
   <a href="schedule.html"><i class="fa-solid fa-calendar-check"></i>جدول المراجعة</a>
   <a href="community.html"><i class="fa-solid fa-users"></i>المجتمع الدراسي</a>
-  <a href="login.html">تسجيل الخروج</a>
+  <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i>خروج</a>
  </nav>
 </header>
 
@@ -49,6 +56,7 @@
   <div class="card" onclick="tap('community')"><i class="fa-solid fa-users"></i><h3>المجتمع الدراسي</h3><p>شارك الملاحظات وتناقش</p></div>
  </div>
 </main>
+
 <footer>
  رهف عقيل جعفري
  <span>+966 55 960 2062</span>
@@ -63,17 +71,17 @@
   <p id="modalBody"></p>
  </div>
 </div>
+
 <script>
 const features={
  ai:{t:"المساعد الذكي",d:"تفاعل مباشر مع نظام مدعوم بالذكاء الاصطناعي للحصول على إجابات فورية ودعم دراسي مخصص."},
  schedule:{t:"جدول المراجعة",d:"إنشاء وتنظيم جدول دراسي ذكي يراعي أولوياتك ويعطيك تذكيرات تلقائية."},
- community:{t:"المجتمع الدراسي",d:"مساحة تواصل مع زملاءك لتبادل الملاحظات، طرح الأسئلة، والعمل الجماعي."}
+ community:{t:"المجتمع الدراسي",d:"مساحة تواصل مع زملائك لتبادل الملاحظات، طرح الأسئلة والعمل الجماعي."}
 };
 function tap(k){
- const m=document.getElementById("modal");
  document.getElementById("modalTitle").textContent=features[k].t;
  document.getElementById("modalBody").textContent=features[k].d;
- m.classList.add("show");
+ document.getElementById("modal").classList.add("show");
 }
 function closeModal(){document.getElementById("modal").classList.remove("show")}
 </script>
