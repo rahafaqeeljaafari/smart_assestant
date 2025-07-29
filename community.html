@@ -1,0 +1,65 @@
+<!-- community.html -->
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<title>المجتمع الدراسي</title>
+<style>
+:root{--g1:#4e5eff;--g2:#8b37ff;--bg:#f7f9ff;--c:#fff;--t:#1e1e1e}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Tajawal',sans-serif}
+body{background:var(--bg);min-height:100vh;color:var(--t);display:flex;flex-direction:column}
+header{background:linear-gradient(90deg,var(--g1),var(--g2));color:var(--c);padding:18px 30px;font-weight:700;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+nav{display:flex;gap:20px;font-size:.9rem}
+nav a{color:var(--c);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:6px;transition:.3s}
+nav a:hover{opacity:.8}
+#main{flex:1;max-width:900px;margin:auto;width:100%;padding:25px}
+form{display:flex;flex-direction:column;gap:10px;margin-bottom:25px}
+textarea{resize:none;height:90px;padding:12px 14px;border:1px solid #ddd;border-radius:12px;font-size:1rem}
+button{align-self:flex-start;background:linear-gradient(90deg,var(--g1),var(--g2));border:none;color:#fff;padding:10px 22px;border-radius:12px;font-weight:600;cursor:pointer}
+.post{background:var(--c);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 6px 14px rgba(0,0,0,.05)}
+.time{font-size:.75rem;color:#666;margin-bottom:8px}
+.replySec{margin-top:15px;border-top:1px solid #eee;padding-top:15px}
+.reply{background:#f1f3ff;border-radius:12px;padding:10px;margin-bottom:10px;font-size:.9rem}
+.replyForm{display:flex;gap:8px;margin-top:10px}
+.replyForm input{flex:1;border:1px solid #ddd;border-radius:12px;padding:8px 12px}
+.replyForm button{padding:8px 18px}
+</style></head><body>
+<header>
+ <span>المجتمع الدراسي</span>
+ <nav>
+   <a href="smart_assestant.html"><i class="fa-solid fa-robot"></i>المساعد الذكي</a>
+   <a href="schedule.html"><i class="fa-solid fa-calendar-check"></i>جدول المراجعة</a>
+   <a href="community.html"><i class="fa-solid fa-users"></i>المجتمع الدراسي</a>
+   <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i>خروج</a>
+ </nav>
+</header>
+
+<div id="main">
+<form id="newPost">
+<textarea id="postText" placeholder="شارك فكرة أو اطرح سؤالاً..."></textarea>
+<button>نشر</button>
+</form>
+<div id="posts"></div>
+</div>
+
+<script>
+const postsDiv=document.getElementById('posts'),newPost=document.getElementById('newPost'),postText=document.getElementById('postText')
+let data=JSON.parse(localStorage.getItem('forum')||'[]')
+function save(){localStorage.setItem('forum',JSON.stringify(data))}
+function time(){return new Date().toLocaleString('ar-SA',{dateStyle:'short',timeStyle:'short'})}
+function render(){
+ postsDiv.innerHTML=''
+ data.forEach((p,i)=>{
+   const d=document.createElement('div');d.className='post'
+   d.innerHTML=`<div class="time">${p.time}</div><div>${p.text}</div>`
+   const repSec=document.createElement('div');repSec.className='replySec'
+   p.replies.forEach(r=>{const rd=document.createElement('div');rd.className='reply';rd.innerHTML=`<div class="time">${r.time}</div><div>${r.text}</div>`;repSec.appendChild(rd)})
+   const form=document.createElement('div');form.className='replyForm';form.innerHTML=`<input placeholder="اكتب ردك..." /><button>رد</button>`
+   form.querySelector('button').onclick=()=>{const inp=form.querySelector('input');if(inp.value.trim()){p.replies.push({text:inp.value,time:time()});save();render()}}
+   repSec.appendChild(form);d.appendChild(repSec);postsDiv.appendChild(d)
+ })
+}
+newPost.onsubmit=e=>{e.preventDefault();if(postText.value.trim()){data.unshift({text:postText.value,time:time(),replies:[]});postText.value='';save();render()}}
+render()
+</script>
+</body></html>
