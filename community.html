@@ -1,6 +1,7 @@
 <!-- community.html -->
 <!DOCTYPE html><html lang="ar" dir="rtl"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <title>المجتمع الدراسي</title>
@@ -10,7 +11,7 @@
 body{background:var(--bg);min-height:100vh;color:var(--t);display:flex;flex-direction:column}
 header{background:linear-gradient(90deg,var(--g1),var(--g2));color:var(--c);padding:18px 30px;font-weight:700;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
 nav{display:flex;gap:20px;font-size:.9rem}
-nav a{color:var(--c);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:6px;transition:.3s}
+nav a{color:#fff;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:6px;transition:.3s}
 nav a:hover{opacity:.8}
 #main{flex:1;max-width:900px;margin:auto;width:100%;padding:25px}
 form{display:flex;flex-direction:column;gap:10px;margin-bottom:25px}
@@ -23,11 +24,18 @@ button{align-self:flex-start;background:linear-gradient(90deg,var(--g1),var(--g2
 .replyForm{display:flex;gap:8px;margin-top:10px}
 .replyForm input{flex:1;border:1px solid #ddd;border-radius:12px;padding:8px 12px}
 .replyForm button{padding:8px 18px}
+
+/* --- mobile --- */
+@media(max-width:600px){
+ header{padding:16px 20px}
+ nav{flex-direction:column;gap:12px;font-size:.85rem;align-items:flex-start;margin-top:10px}
+ #main{padding:20px 15px}
+}
 </style></head><body>
 <header>
  <span>المجتمع الدراسي</span>
  <nav>
-   <a href="smart_assestant.html"><i class="fa-solid fa-robot"></i>المساعد الذكي</a>
+   <a href="smart_assistant.html"><i class="fa-solid fa-robot"></i>المساعد الذكي</a>
    <a href="schedule.html"><i class="fa-solid fa-calendar-check"></i>جدول المراجعة</a>
    <a href="community.html"><i class="fa-solid fa-users"></i>المجتمع الدراسي</a>
    <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i>خروج</a>
@@ -49,7 +57,7 @@ function save(){localStorage.setItem('forum',JSON.stringify(data))}
 function time(){return new Date().toLocaleString('ar-SA',{dateStyle:'short',timeStyle:'short'})}
 function render(){
  postsDiv.innerHTML=''
- data.forEach((p,i)=>{
+ data.forEach(p=>{
    const d=document.createElement('div');d.className='post'
    d.innerHTML=`<div class="time">${p.time}</div><div>${p.text}</div>`
    const repSec=document.createElement('div');repSec.className='replySec'
